@@ -4,6 +4,9 @@
     margin: 0;
 }
 
+:root {
+}
+
 body {
     display: flex;
     align-items: center;
@@ -20,6 +23,10 @@ body {
     box-shadow: 0 0 6px 6px rgb(204, 204, 204);
     border-radius: 12px;
     overflow: hidden;
+}
+
+header {
+    padding: 4px 0;
 }
 
 header h1 {
@@ -47,18 +54,15 @@ header nav ul li {
 
 header > input {
     display: block;
-    height: 30px;
     width: 300px;
     font-size: 15px;
-    opacity: 0.7;
+    opacity: 0.5;
     margin: 0 auto;
     padding: 8px;
     outline: none;
     border-style: none none solid none;
-}
-
-header > input:focus {
-    opacity: 1;
+    border-bottom-color: #00a558;
+    transition: 0.5s;
 }
 
 header > input:focus {

@@ -1,13 +1,10 @@
-let nodeElementTitle = document.querySelectorAll("header > nav > ul > li"),
-    nodeElementContent = document.querySelectorAll(".list-content"),
-    nodeElementSubContent = document.querySelectorAll(".list-content .list-item"),
-    nodeInputSearch = document.querySelector("#input-search"),
-    listProduct = document.querySelectorAll("div.list-item-content");
-
 let arrPhotos1 = [],
     arrPhotos2 = [];
-fetch("https://jsonplaceholder.typicode.com/photos")
-    .then((response) => response.json())
+var url = "https://jsonplaceholder.typicode.com/photos";
+fetch(url)
+    .then(function (response) {
+        return response.json();
+    })
     .then((json) => {
         for (let i = 0; i < 100; i++) {
             arrPhotos1.push(json[i]);
@@ -23,7 +20,7 @@ fetch("https://jsonplaceholder.typicode.com/photos")
                 <img src="https://picsum.photos/100/100?random=${i + 100}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
             </div>
             <div class="list-item-content">
-                <h4>${photo.title} - nhndev110</h4>
+                <h4>${photo.title}</h4>
             </div>
         </div>`;
         });
@@ -34,7 +31,7 @@ fetch("https://jsonplaceholder.typicode.com/photos")
                 <img src="https://picsum.photos/100/100?random=${i}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
             </div>
             <div class="list-item-content">
-                <h4>${photo.title} - nhndev110</h4>
+                <h4>${photo.title}</h4>
             </div>
         </div>`;
         });
@@ -42,6 +39,11 @@ fetch("https://jsonplaceholder.typicode.com/photos")
         nodeElementContent[0].innerHTML = htmls1.join("");
         nodeElementContent[1].innerHTML = htmls2.join("");
     });
+
+let nodeElementTitle = document.querySelectorAll("header > nav > ul > li"),
+    nodeElementContent = document.querySelectorAll(".list-content"),
+    nodeInputSearch = document.querySelector("#input-search"),
+    listProduct = document.querySelectorAll("div.list-item-content");
 
 nodeElementTitle[0].onclick = function () {
     nodeElementContent[0].style.display = "block";
@@ -57,12 +59,13 @@ nodeElementTitle[1].onclick = function () {
     nodeElementTitle[0].style.opacity = 0.5;
 };
 
+var nodeElementSubContent = document.querySelectorAll(".list-content");
+
 nodeInputSearch.onkeyup = function (e) {
     let resultSearch = e.target.value,
         lenArr = nodeElementSubContent.length;
     for (let i = 0; i < lenArr; i++) {
         let textElement = nodeElementSubContent[i].querySelector(".list-item-content p")[1].innerText;
-        console.log(textElement);
         if (textElement.toLowerCase().indexOf(resultSearch) < 0) {
             nodeElementSubContent[i].style.display = "none";
         } else {

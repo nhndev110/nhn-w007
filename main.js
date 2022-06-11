@@ -4,26 +4,43 @@ let nodeElementTitle = document.querySelectorAll("header > nav > ul > li"),
     nodeInputSearch = document.querySelector("#input-search"),
     listProduct = document.querySelectorAll("div.list-item-content");
 
-let arrPhotos = [];
+let arrPhotos1 = [],
+    arrPhotos2 = [];
 fetch("https://jsonplaceholder.typicode.com/photos")
     .then((response) => response.json())
     .then((json) => {
         for (let i = 0; i < 100; i++) {
-            arrPhotos.push(json[i]);
+            arrPhotos1.push(json[i]);
         }
 
-        let htmls = arrPhotos.map(function (photo, i) {
+        for (let i = 100; i < 200; i++) {
+            arrPhotos2.push(json[i]);
+        }
+
+        let htmls1 = arrPhotos1.map(function (photo, i) {
             return `<div class="list-item">
             <div class="list-item-img">
-                <img src="https://picsum.photos/200/300?random=${i}" alt="" width="100%" />
+                <img src="https://picsum.photos/100/100?random=${i + 100}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
             </div>
             <div class="list-item-content">
-                <p>${photo.title}</p>
+                <h4>${photo.title} - nhndev110</h4>
             </div>
         </div>`;
         });
 
-        nodeElementContent[0].innerHTML = htmls.join("");
+        let htmls2 = arrPhotos2.map(function (photo, i) {
+            return `<div class="list-item">
+            <div class="list-item-img">
+                <img src="https://picsum.photos/100/100?random=${i}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
+            </div>
+            <div class="list-item-content">
+                <h4>${photo.title} - nhndev110</h4>
+            </div>
+        </div>`;
+        });
+
+        nodeElementContent[0].innerHTML = htmls1.join("");
+        nodeElementContent[1].innerHTML = htmls2.join("");
     });
 
 nodeElementTitle[0].onclick = function () {

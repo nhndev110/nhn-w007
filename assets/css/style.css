@@ -72,7 +72,7 @@ header > input:focus {
 .list-content {
     overflow-y: scroll;
     height: 600px;
-    padding: 0 0 20px 0;
+    padding: 0 8px 20px 8px;
     box-shadow: 0 -50px 50px -22px rgba(128, 128, 128, 0.623) inset;
 }
 
@@ -90,7 +90,7 @@ header > input:focus {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #81ffc4;
-    border-radius: 6px;
+    border-radius: 12px;
 }
 
 /* Handle on hover */
@@ -104,17 +104,30 @@ header > input:focus {
     align-items: center;
     justify-content: space-evenly;
     margin-top: 20px;
+    padding: 6px;
+    transition: 0.3s;
+    border-radius: 12px;
+}
+
+.list-content .list-item:hover {
+    cursor: pointer;
+    background-color: #81ffc4;
 }
 
 .list-item .list-item-img {
     width: 100px;
+    border-radius: 50%;
     overflow: hidden;
 }
 
 .list-item-img img {
-    width: 100%;
-    border-radius: 50%;
     display: block;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.list-content .list-item:hover .list-item-img img {
+    transform: scale(1.2);
 }
 
 .list-item .list-item-content {

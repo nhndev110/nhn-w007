@@ -40,7 +40,7 @@ fetch(url)
         nodeElementContent[1].innerHTML = htmls2.join("");
     });
 
-let nodeElementTitle = document.querySelectorAll("header > nav > ul > li"),
+var nodeElementTitle = document.querySelectorAll("header > nav > ul > li"),
     nodeElementContent = document.querySelectorAll(".list-content"),
     nodeInputSearch = document.querySelector("#input-search"),
     listProduct = document.querySelectorAll("div.list-item-content");
@@ -59,13 +59,13 @@ nodeElementTitle[1].onclick = function () {
     nodeElementTitle[0].style.opacity = 0.5;
 };
 
-var nodeElementSubContent = document.querySelectorAll(".list-content");
-
 nodeInputSearch.onkeyup = function (e) {
-    let resultSearch = e.target.value,
+    var nodeElementSubContent = document.querySelectorAll(".list-content .list-item"),
+        resultSearch = e.target.value,
         lenArr = nodeElementSubContent.length;
+
     for (let i = 0; i < lenArr; i++) {
-        let textElement = nodeElementSubContent[i].querySelector(".list-item-content p")[1].innerText;
+        var textElement = nodeElementSubContent[i].querySelector(".list-item-content h4").innerText;
         if (textElement.toLowerCase().indexOf(resultSearch) < 0) {
             nodeElementSubContent[i].style.display = "none";
         } else {

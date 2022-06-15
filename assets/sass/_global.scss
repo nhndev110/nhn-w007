@@ -14,7 +14,7 @@ body {
     height: 100vh;
     background-image: var(--background-color-body);
     overflow-x: hidden;
-    padding: 8px;
+    padding: 30px 20px;
 }
 
 ul {
@@ -31,15 +31,15 @@ button {
 }
 
 .activity {
-    opacity: 1;
-    display: block;
+    opacity: 1 !important;
+    display: block !important;
 }
 
 #wraper {
-    width: 450px;
     margin: 0 auto;
     background-color: white;
     box-shadow: 0 0 6px 6px rgb(204, 204, 204);
     border-radius: 12px;
     overflow: hidden;
+    width: 70%;
 }

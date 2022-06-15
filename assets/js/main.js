@@ -1,68 +1,27 @@
-// let arrPhotos1 = [],
-//     arrPhotos2 = [];
 var url = "https://jsonplaceholder.typicode.com/photos";
 fetch(url)
     .then(function (response) {
         return response.json();
     })
     .then((json) => {
-        // =============== C1 ===============
-        // for (let i = 0; i < 100; i++) {
-        //     arrPhotos1.push(json[i]);
-        // }
-
-        // for (let i = 100; i < 200; i++) {
-        //     arrPhotos2.push(json[i]);
-        // }
-
-        // let htmls1 = arrPhotos1.map(function (photo, i) {
-        //     return `<div class="list-item">
-        //     <div class="list-item-img">
-        //         <img src="https://picsum.photos/100/100?random=${i + 100}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
-        //     </div>
-        //     <div class="list-item-content">
-        //         <h4>${photo.title}</h4>
-        //     </div>
-        // </div>`;
-        // });
-
-        // let htmls2 = arrPhotos2.map(function (photo, i) {
-        //     return `<div class="list-item">
-        //     <div class="list-item-img">
-        //         <img src="https://picsum.photos/100/100?random=${i}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
-        //     </div>
-        //     <div class="list-item-content">
-        //         <h4>${photo.title}</h4>
-        //     </div>
-        // </div>`;
-        // });
-
-        // nodeElementContent[0].innerHTML = htmls1.join("");
-        // nodeElementContent[1].innerHTML = htmls2.join("");
-
-        // =============== C2 ===============
-        // nodeElementContent[0].innerHTML = getData(json, 100).join("");
-        // nodeElementContent[1].innerHTML = getData(json, 100).join("");
-
-        // =============== C3 ===============
         for (let i = 0; i < nodeElementContent.length; i++) {
-            nodeElementContent[i].innerHTML = getData(json, 100).join("");
+            nodeElementContent[i].innerHTML = getData(json, 50*i, 50*(i+1)).join("");
         }
     })
     .catch(() => {
         console.log("Error");
     });
 
-function getData(json, len) {
+function getData(json, start, len) {
     let arrData = [];
-    for (let i = 0; i < len; i++) {
+    for (let i = start; i < len; i++) {
         arrData.push(json[i]);
     }
 
     let htmls = arrData.map(function (data, i) {
         return `<div class="list-item">
                     <div class="list-item-img">
-                        <img src="https://picsum.photos/100/100?random=${i + 100}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
+                        <img src="https://picsum.photos/100/100?random=${start+i}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
                     </div>
                     <div class="list-item-content">
                         <h4>${data.title}</h4>
@@ -98,7 +57,7 @@ nodeInputSearch.onkeyup = function (e) {
 
     for (let i = 0; i < lenArr; i++) {
         var textElement = nodeElementSubContent[i].querySelector(".list-item-content h4").innerText;
-        if (textElement.toLowerCase().indexOf(resultSearch) < 0) {
+        if (textElement.toLowerCase().indexOf(resultSearch.toLowerCase()) < 0) {
             nodeElementSubContent[i].style.display = "none";
         } else {
             nodeElementSubContent[i].style.display = "flex";

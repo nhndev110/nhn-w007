@@ -1,63 +1,95 @@
-let arrPhotos1 = [],
-    arrPhotos2 = [];
+// let arrPhotos1 = [],
+//     arrPhotos2 = [];
 var url = "https://jsonplaceholder.typicode.com/photos";
 fetch(url)
     .then(function (response) {
         return response.json();
     })
     .then((json) => {
-        for (let i = 0; i < 100; i++) {
-            arrPhotos1.push(json[i]);
+        // =============== C1 ===============
+        // for (let i = 0; i < 100; i++) {
+        //     arrPhotos1.push(json[i]);
+        // }
+
+        // for (let i = 100; i < 200; i++) {
+        //     arrPhotos2.push(json[i]);
+        // }
+
+        // let htmls1 = arrPhotos1.map(function (photo, i) {
+        //     return `<div class="list-item">
+        //     <div class="list-item-img">
+        //         <img src="https://picsum.photos/100/100?random=${i + 100}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
+        //     </div>
+        //     <div class="list-item-content">
+        //         <h4>${photo.title}</h4>
+        //     </div>
+        // </div>`;
+        // });
+
+        // let htmls2 = arrPhotos2.map(function (photo, i) {
+        //     return `<div class="list-item">
+        //     <div class="list-item-img">
+        //         <img src="https://picsum.photos/100/100?random=${i}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
+        //     </div>
+        //     <div class="list-item-content">
+        //         <h4>${photo.title}</h4>
+        //     </div>
+        // </div>`;
+        // });
+
+        // nodeElementContent[0].innerHTML = htmls1.join("");
+        // nodeElementContent[1].innerHTML = htmls2.join("");
+
+        // =============== C2 ===============
+        // nodeElementContent[0].innerHTML = getData(json, 100).join("");
+        // nodeElementContent[1].innerHTML = getData(json, 100).join("");
+
+        // =============== C3 ===============
+        for (let i = 0; i < nodeElementContent.length; i++) {
+            nodeElementContent[i].innerHTML = getData(json, 100).join("");
         }
-
-        for (let i = 100; i < 200; i++) {
-            arrPhotos2.push(json[i]);
-        }
-
-        let htmls1 = arrPhotos1.map(function (photo, i) {
-            return `<div class="list-item">
-            <div class="list-item-img">
-                <img src="https://picsum.photos/100/100?random=${i + 100}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
-            </div>
-            <div class="list-item-content">
-                <h4>${photo.title}</h4>
-            </div>
-        </div>`;
-        });
-
-        let htmls2 = arrPhotos2.map(function (photo, i) {
-            return `<div class="list-item">
-            <div class="list-item-img">
-                <img src="https://picsum.photos/100/100?random=${i}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
-            </div>
-            <div class="list-item-content">
-                <h4>${photo.title}</h4>
-            </div>
-        </div>`;
-        });
-
-        nodeElementContent[0].innerHTML = htmls1.join("");
-        nodeElementContent[1].innerHTML = htmls2.join("");
+    })
+    .catch(() => {
+        console.log("Error");
     });
+
+function getData(json, len) {
+    let arrData = [];
+    for (let i = 0; i < len; i++) {
+        arrData.push(json[i]);
+    }
+
+    let htmls = arrData.map(function (data, i) {
+        return `<div class="list-item">
+                    <div class="list-item-img">
+                        <img src="https://picsum.photos/100/100?random=${i + 100}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
+                    </div>
+                    <div class="list-item-content">
+                        <h4>${data.title}</h4>
+                    </div>
+                </div>`;
+    });
+    return htmls;
+}
 
 var nodeElementTitle = document.querySelectorAll("header > nav > ul > li"),
     nodeElementContent = document.querySelectorAll(".list-content"),
     nodeInputSearch = document.querySelector("#input-search"),
     listProduct = document.querySelectorAll("div.list-item-content");
 
-nodeElementTitle[0].onclick = function () {
-    nodeElementContent[0].style.display = "block";
-    nodeElementContent[1].style.display = "none";
-    nodeElementTitle[1].style.opacity = 0.5;
-    nodeElementTitle[0].style.opacity = 1;
-};
+nodeElementTitle.forEach((tab, idx) => {
+    tab.onclick = function () {
+        document.querySelector(".activity").classList.remove("activity");
+        this.classList.add("activity");
 
-nodeElementTitle[1].onclick = function () {
-    nodeElementContent[1].style.display = "block";
-    nodeElementContent[0].style.display = "none";
-    nodeElementTitle[1].style.opacity = 1;
-    nodeElementTitle[0].style.opacity = 0.5;
-};
+        nodeElementContent[idx].style.display = "block";
+        for (let i = 0; i < nodeElementContent.length; i++) {
+            if (i != idx) {
+                nodeElementContent[i].style.display = "none";
+            }
+        }
+    };
+});
 
 nodeInputSearch.onkeyup = function (e) {
     var nodeElementSubContent = document.querySelectorAll(".list-content .list-item"),

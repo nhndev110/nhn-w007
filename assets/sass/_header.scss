@@ -1,0 +1,43 @@
+header {
+    padding: 4px 0;
+
+    h1 {
+        text-align: center;
+        padding: 6px 0;
+        font-size: 24px;
+    }
+
+    nav ul {
+        display: flex;
+        text-align: center;
+        justify-content: space-around;
+
+        & li {
+            display: inline-block;
+            border-bottom: 2px solid var(--outline-color);
+            width: 50%;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 12px 34px;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+    }
+
+    & > input {
+        display: block;
+        width: 300px;
+        font-size: 15px;
+        opacity: 0.5;
+        margin: 0 auto;
+        padding: 8px;
+        outline: none;
+        border-style: none none solid none;
+        border-bottom-color: var(--outline-color);
+        transition: 0.5s;
+
+        &:focus {
+            opacity: 1;
+        }
+    }
+}

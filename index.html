@@ -11,11 +11,15 @@
         <meta property="og:title" content="nhndev110 - Tìm Kiếm Sản Phẩm" />
         <meta property="og:description" content="Sản phẩm thuộc chủ sở hữu nhndev110" />
         <meta property="og:image" content="./assets/img/avatar-minsize.png" />
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <title>nhndev110 - Tìm Kiếm Sản Phẩm</title>
     </head>
     <body>
         <div id="wraper">
-            <h1>nhndev110 - Tìm Kiếm Sản Phẩm</h1>
+            <header>
+                <h1>nhndev110 - Tìm Kiếm Sản Phẩm</h1>
+            </header>
             <div id="content">
                 <div id="menu-content">
                     <nav>
@@ -28,7 +32,10 @@
                     </nav>
                 </div>
                 <div id="main-content">
-                    <input type="search" name="" id="input-search" placeholder="Bạn muốn tìm kiếm gì ???" />
+                    <div class="search-content">
+                        <label for="input-search"><ion-icon class="icon-search" name="search"></ion-icon></label>
+                        <input type="search" name="" id="input-search" placeholder="Bạn muốn tìm kiếm gì ???" />
+                    </div>
                     <div class="list-content"></div>
                     <div class="list-content" style="display: none"></div>
                     <div class="list-content" style="display: none"></div>

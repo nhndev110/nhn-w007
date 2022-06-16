@@ -28,6 +28,8 @@ a {
 input,
 button {
     font-family: var(--font-family);
+    outline: none;
+    border: none;
 }
 
 .activity {

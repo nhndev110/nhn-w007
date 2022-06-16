@@ -31,7 +31,7 @@ function getData(json, start, len) {
     return htmls;
 }
 
-var nodeElementTitle = document.querySelectorAll("header > nav > ul > li"),
+var nodeElementTitle = document.querySelectorAll("#menu-content > nav > ul > li "),
     nodeElementContent = document.querySelectorAll(".list-content"),
     nodeInputSearch = document.querySelector("#input-search"),
     listProduct = document.querySelectorAll("div.list-item-content");

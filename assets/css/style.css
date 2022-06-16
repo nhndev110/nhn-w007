@@ -62,6 +62,7 @@ header h1 {
 
 #content {
   display: flex;
+  height: calc(100% - 60px);
 }
 #content #menu-content {
   width: 20%;
@@ -111,7 +112,7 @@ header h1 {
 }
 #content #main-content .list-content {
   overflow-y: scroll;
-  height: 80vh;
+  height: calc(100% - 66px);
   padding: 0 8px 20px;
 }
 #content #main-content .list-content .list-item {

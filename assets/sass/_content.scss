@@ -1,5 +1,6 @@
 #content {
     display: flex;
+    height: calc(100% - 60px);
 
     #menu-content {
         width: 20%;
@@ -59,7 +60,7 @@
 
         .list-content {
             overflow-y: scroll;
-            height: 80vh;
+            height: calc(100% - 66px);
             padding: 0 8px 20px;
 
             .list-item {

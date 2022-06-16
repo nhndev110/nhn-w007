@@ -1,11 +1,11 @@
-var url = "https://jsonplaceholder.typicode.com/photos";
+const url = "https://jsonplaceholder.typicode.com/photos";
 fetch(url)
     .then(function (response) {
         return response.json();
     })
     .then((json) => {
         for (let i = 0; i < nodeElementContent.length; i++) {
-            nodeElementContent[i].innerHTML = getData(json, 50*i, 50*(i+1)).join("");
+            nodeElementContent[i].innerHTML = getData(json, 50 * i, 50 * (i + 1)).join("");
         }
     })
     .catch(() => {
@@ -21,7 +21,7 @@ function getData(json, start, len) {
     let htmls = arrData.map(function (data, i) {
         return `<div class="list-item">
                     <div class="list-item-img">
-                        <img src="https://picsum.photos/100/100?random=${start+i}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
+                        <img src="https://picsum.photos/100/100?random=${start + i}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
                     </div>
                     <div class="list-item-content">
                         <h4>${data.title}</h4>
@@ -31,7 +31,7 @@ function getData(json, start, len) {
     return htmls;
 }
 
-var nodeElementTitle = document.querySelectorAll("#menu-content > nav > ul > li "),
+var nodeElementTitle = document.querySelectorAll("#sidebar-content > nav > ul > li "),
     nodeElementContent = document.querySelectorAll(".list-content"),
     nodeInputSearch = document.querySelector("#input-search"),
     listProduct = document.querySelectorAll("div.list-item-content");

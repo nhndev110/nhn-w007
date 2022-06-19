@@ -83,6 +83,7 @@ header h1 {
   background-color: var(--outline-color-opacity);
 }
 #content #main-content {
+  position: relative;
   width: 70%;
 }
 #content #main-content .search-content {

@@ -5,7 +5,7 @@ fetch(url)
     })
     .then((json) => {
         for (let i = 0; i < nodeElementContent.length; i++) {
-            nodeElementContent[i].innerHTML = getData(json, 50 * i, 50 * (i + 1)).join("");
+            nodeElementContent[i].innerHTML = getData(json, 500 * i, 500 * (i + 1)).join("");
         }
     })
     .catch(() => {
@@ -21,7 +21,7 @@ function getData(json, start, len) {
     let htmls = arrData.map(function (data, i) {
         return `<div class="list-item">
                     <div class="list-item-img">
-                        <img src="https://picsum.photos/100/100?random=${start + i}" alt="nhndev110 - Tìm Kiếm Sản Phẩm" title="nhndev110 - Tìm Kiếm Sản Phẩm" width="100%" />
+                        <img src="${data.url}" alt="nhndev110 - Tìm Kiếm" title="nhndev110 - Tìm Kiếm" width="100%" />
                     </div>
                     <div class="list-item-content">
                         <h4>${data.title}</h4>
@@ -57,10 +57,10 @@ nodeInputSearch.onkeyup = function (e) {
 
     for (let i = 0; i < lenArr; i++) {
         var textElement = nodeElementSubContent[i].querySelector(".list-item-content h4").innerText;
-        if (textElement.toLowerCase().indexOf(resultSearch.toLowerCase()) < 0) {
-            nodeElementSubContent[i].style.display = "none";
-        } else {
+        if (textElement.toLowerCase().includes(resultSearch.toLowerCase())) {
             nodeElementSubContent[i].style.display = "flex";
+        } else {
+            nodeElementSubContent[i].style.display = "none";
         }
     }
 };

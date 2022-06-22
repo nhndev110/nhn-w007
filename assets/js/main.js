@@ -6,7 +6,7 @@ fetch(url)
     })
     .then((json) => {
         for (let i = 0; i < nodeElementContent.length; i++) {
-            nodeElementContent[i].innerHTML = getData(json, 1000 * i, 1000 * (i + 1)).join("");
+            nodeElementContent[i].innerHTML = getData(json, 50 * i, 50 * (i + 1)).join("");
         }
     })
     .catch(() => {
